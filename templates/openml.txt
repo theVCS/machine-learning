@@ -1,0 +1,21 @@
+###################################### start #########################################
+task_id = 10101
+task = tasks.get_task(task_id)
+dataset = datasets.get_dataset(task.dataset_id)
+X, y, categorical_indicator, attribute_names = dataset.get_data(
+    dataset_format="dataframe", target=dataset.default_target_attribute
+)
+#######################################################################################
+
+
+
+
+
+
+
+
+####################################### end ###########################################
+run = runs.run_model_on_task(model, task)
+run.publish()
+print(f'View the run online: {run.openml_url}')
+#######################################################################################

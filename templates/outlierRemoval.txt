@@ -1,0 +1,46 @@
+##################################### using percentile ###################################
+
+maxPer, minPer = df["price_per_sqft"].quantile([0.965, 0.025])
+df = df[(df["price_per_sqft"] < maxPer) & (df["price_per_sqft"] > minPer)]
+df.head()
+
+##########################################################################################
+
+
+
+
+
+############################## using standard deviation ######################################
+
+finding mean and standard_deviation:
+68% data between [(mean - standard_deviation), (mean + standard_deviation)]
+95% data between [(mean - 2*standard_deviation), (mean + 2*standard_deviation)]
+99.7% data between [(mean - 3*standard_deviation), (mean + 3*standard_deviation)]
+
+##############################################################################################
+
+
+
+
+
+####################################### using z score ########################################
+
+calcualting z_score for each row as => (value - mean) / standard_deviation
+and will neglect values on basis z_score
+
+##############################################################################################
+
+
+
+
+
+######################################### using IQR ##########################################
+
+Q1 = df.height.quantile(0.25)
+Q3 = df.height.quantile(0.75)
+IQR = Q3 - Q1
+lower_lmt = Q1 - 1.5 * IQR
+upper_lmt = Q3 + 1.5 * IQR
+df = df[(df.height > lower_lmt) & (df.height < upper_lmt)]
+
+##############################################################################################

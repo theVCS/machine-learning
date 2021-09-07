@@ -1,0 +1,10 @@
+############################################################################################
+
+plt.hist(df.height, bins=20, rwidth=0.8, density=True)
+plt.xlabel('Height (inches)')
+plt.ylabel('Count')
+
+rng = np.arange(df.height.min(), df.height.max(), 0.1)
+plt.plot(rng, norm.pdf(rng,df.height.mean(),df.height.std()))
+
+############################################################################################
